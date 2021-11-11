@@ -1,8 +1,12 @@
 <div class='movies col-4'>
-    <h3>Movies to Watch</h3>
-    <ol>
-       <li *ngFor ="let movie of movies">{{movie}}</li>
-    </ol>
-    <hr>
+   <h3>Movies to Watch</h3>
+   <ol>
+      <li *ngFor ="let movie of movies">{{movie}}</li>
+   </ol>
+   
+   <input #newMovie (keyup.enter)='addMovie(newMovie.value)' type='text' placeholder="Enter Movie Title Here"/>
+   <button (click)='addMovie(newMovie.value)'>Add</button>
+   <button (click) = 'removeMovie()'> Remove Last Movie</button>
+   
 
- </div>
+</div>

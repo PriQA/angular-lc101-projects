@@ -11,8 +11,16 @@ h3 {
 }
 
 img {
-    max-width: 15%;
+    max-width: 45%;
     height: auto;
     display: block;
     margin: auto;
+}
+
+p {
+    color: rgb(233, 18, 143);
+    font-size:xx-large;
+    text-overflow: ellipsis;
+    text-shadow: #3c79b8;
+    text-align: center;
 }

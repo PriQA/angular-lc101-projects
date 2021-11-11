@@ -17,7 +17,25 @@ export class CandidatesComponent implements OnInit {
   ];
 
   crew = [];
+//takes a candidate and add them to the Crew array
+  addToCrew(candidate: object) {
 
+    if(!this.crew.includes(candidate)) {
+
+      this.crew.push(candidate);
+    }
+  console.log(crew);
+  }
+
+
+  checkSendMissionBtn(candidate: object): boolean {
+    const isCandidateDefined = candidate !== undefined;
+    const isCandidateNotInCrew =!this.crew.includes(candidate);
+    const isCrewFull = this.crew.length < 3;
+      return isCandidateDefined && isCandidateNotInCrew && isCrewFull;
+    }
+    
+  }
   constructor() { }
 
   ngOnInit() {
