@@ -5,43 +5,53 @@
         <div class="candidates col-3">
             <h2>Candidates</h2>
             <ol>
-                <li (click) = "selected = candidate" *ngFor = "let candidate of candidates">{{candidate.name}}</li>
+                <li (click)="selected = candidate" *ngFor="let candidate of candidates">
+                    {{candidate.name}}
+                </li>
             </ol>
         </div>
-    
+
         <div class="data col-3">
             <h2>Candidate Data</h2>
-            <p  *ngIf ="selected !==undefined">
-            
-            Name:{{selected.name}}  <br>
-            Age: {{selected.data.age}} <br>
-            Mass: {{selected.data.mass}} <br>
-            Sidekick: {{selected.data.sidekick}} 
-
-        </p>
-
+            <!-- this is an example of conditional rendering -->
+            <!-- only display the p tag is some condition is met -->
+            <!-- the condition is if we have selected a candidate -->
+            <p *ngIf="selected !== undefined">
+                <!-- Add an *ngIf to this tag to display the selected candidate's data-->
+                Name: {{selected.name}} <br>
+                Age: {{selected.data.age}}<br>
+                Mass: {{selected.data.mass}} <br>
+                Sidekick: {{selected.data.sidekick}}
+            </p>
         </div>
-    
+
         <div class="centered col-3">
             <h2>Sidekick</h2>
             <!-- Use *ngIf and the correct placeholder to display a sidekick's image -->
-            <img src="{{selected.image}}" *ngIf = "selected !== undefined" alt="OOPS! No image available."/>
+            <img src="{{selected.image}}" *ngIf="selected !== undefined" alt="OOPS! No image available." />
         </div>
 
         <div class="crew col-3">
             <h2>Selected Crew</h2>
+            <p>(maximum of 3)</p>
             <ul>
-                <li *ngFor = "let member of Crew"> {{member.name}}</li>
+                <li *ngFor="let member of crew">{{member.name}}</li>
             </ul>
             <!-- Add a "Clear Crew List" button here. -->
-            <button *ngIf="crew.length > 0"> Clear Crew List</button>
+            <!-- if the crew array contains, display this button -->
+            <button (click)="crew = []" *ngIf="crew.length > 0">
+                Clear Crew List
+            </button>
         </div>
     </div>
     <hr>
-    <div class = 'centered'>
-        <button (click) = "selected= undefined">Clear Data & Image</button>
+    <div class='centered'>
+        <button (click)="selected = undefined">Clear Data & Image</button>
         <!-- Add a "Send on Mission" button here. -->
-      <button (click)= "addToCrew(Selected)" *ngIf =  "checkSendMissionBtn(selected)">Send On Mission</button> 
+        <!-- invoke the addToCrew function inside the click event -->
+        <button (click)="addToCrew(selected)" *ngIf="checkSendMissionBtn(selected)">
+            Send on Mission
+        </button>
     </div>
 </div>
 
@@ -50,6 +60,6 @@
     <h2 class="centered">
         Mission Name:
         <!-- Add a keyup.enter event that calls the changeMissionName function. -->
-        <input #newName type="text"/>
+        <input #newName type="text" />
     </h2>
 </ng-template>

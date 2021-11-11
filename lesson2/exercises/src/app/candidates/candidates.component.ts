@@ -24,7 +24,7 @@ export class CandidatesComponent implements OnInit {
 
       this.crew.push(candidate);
     }
-  console.log(crew);
+  
   }
 
 
@@ -35,7 +35,7 @@ export class CandidatesComponent implements OnInit {
       return isCandidateDefined && isCandidateNotInCrew && isCrewFull;
     }
     
-  }
+  
   constructor() { }
 
   ngOnInit() {
